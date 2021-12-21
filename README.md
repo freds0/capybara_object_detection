@@ -1,6 +1,6 @@
 # Capybara Object Detection
 
-This repo is a tutorial for training and evaluating the Tensorflow Object Detection API using [Capybara Dataset](https://github.com/freds0/capybara_dataset). 
+This repo is a tutorial for training and evaluating the Tensorflow Object Detection API using [Capybara Dataset](https://github.com/freds0/capybara_dataset).
 
 The following steps will be presented regarding the workflow of an object detection project:
 - Google Colab running on GPU TF2
@@ -22,7 +22,7 @@ $ apt-get update && apt-get install -y \
     python3-pip \
     python3-pil \
     python3-lxml \
-    python3-opencv 
+    python3-opencv
 ```
 
 ```buildoutcfg
@@ -86,11 +86,11 @@ Assuming everything went well during the requirements installation, to do the tr
 
 ```
 $ python train.py \
-	--checkpoint_path=CHECKPOINTS_DIR
+    --checkpoint_path=CHECKPOINTS_DIR
     --config_file=PIPELINE_CONFIG_FILE \
-	--checkpoint_every_n=CHECKPOINTS_STEPS \
-	--num_train_steps=TRAIN_STEPS \
-	--num_workers=NUM_WORKS	
+    --checkpoint_every_n=CHECKPOINTS_STEPS \
+    --num_train_steps=TRAIN_STEPS \
+    --num_workers=NUM_WORKS
 ```
 
 ## Exporting your Trained Model do Frozen Graph
@@ -99,21 +99,21 @@ Exporting the model to a Frozen Graph file is the best option if you want to con
 
 ```
 $ python export.py \
-     --config_file=PIPELINE_CONFIG_FILE \
-	--trained_checkpoint_dir=CHECKPOINTS_DIR \
-	--output_directory=EXPORTED_CHECKPOINTS_DIR
+    --config_file=PIPELINE_CONFIG_FILE \
+    --trained_checkpoint_dir=CHECKPOINTS_DIR \
+    --output_directory=EXPORTED_CHECKPOINTS_DIR
 ```
 
-## Running Inference 
+## Running Inference
 
 From a trained and exported model, you can perform inference and detect Capybaras in your own images using the following command:
 
 ```
 $ python inference.py \
-	--model_path=EXPORTED_CHECKPOINTS_DIR \
+    --model_path=EXPORTED_CHECKPOINTS_DIR \
     --image_path=SOURCE_IMAGES_DIR \
-	--label_map=LABEL_MAP_FILE \
-	--output_path=OUTPUT_IMAGES_DIR
+    --label_map=LABEL_MAP_FILE \
+    --output_path=OUTPUT_IMAGES_DIR
 ```
 
 ## Auto-Annotating Images
@@ -124,9 +124,9 @@ To generate annotations in xml format, run the following command:
 
 ```
 $ python annotate.py \
-	--model_path=EXPORTED_CHECKPOINTS_DIR \
+    --model_path=EXPORTED_CHECKPOINTS_DIR \
     --image_path=SOURCE_IMAGES_DIR \
-	--label_map=LABEL_MAP_FILE
+    --label_map=LABEL_MAP_FILE
 ```
 
 The annotations will be generated in the directory of the source images.
