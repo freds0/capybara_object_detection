@@ -1,4 +1,4 @@
-# Capybara Object Detection
+# Capybara Object Detection with Auto-Annotation
 
 This repo is a tutorial for training and evaluating the Tensorflow Object Detection API using [Capybara Dataset](https://github.com/freds0/capybara_dataset).
 
