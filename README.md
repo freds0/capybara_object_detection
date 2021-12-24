@@ -3,18 +3,16 @@
 This repo is a tutorial for training and evaluating the Tensorflow Object Detection API using [Capybara Dataset](https://github.com/freds0/capybara_dataset).
 
 The following steps will be presented regarding the workflow of an object detection project:
-- Google Colab running on GPU TF2
-- Collecting the images to train and validate the Object Detection model.
-- Labeling the dataset using a tool like LabelImg.
-- Preparing a TFRecord file for ingesting in object detection API.
-- Installing the Tensorflow Object Detection API.
-- Creating the OD Config file.
-- Running the Object detection training and eval job.
-- Exporting the model.
+- Requirements Installation
+- Create the Environment using Docker
+- Training on Capybara Dataset
+- Exporting your Trained Model do Frozen Graph
+- Running Inference
+- Auto-Annotating Images
 
+## Requirements Installation
 
-
-## Tensorflow Installation
+To install the Tensorflow Object detection API, it is necessary to install some basic requirements beforehand.
 
 ```buildoutcfg
 $ apt-get update && apt-get install -y \
@@ -25,15 +23,19 @@ $ apt-get update && apt-get install -y \
     python3-opencv
 ```
 
-```buildoutcfg
+```buildWhen starting the training process, information will be displayed at each step, like the example below:outcfg
 $ pip install tf_slim
 ```
+
+And, most importantly, you need to install tensorflow:
 
 ```buildoutcfg
 $ pip install tensorflow-gpu==2.7.0
 ```
 
-# Tensorflow Object Detection API Installation
+### Tensorflow Object Detection API Installation
+
+A detailed tutorial on installing the runtime environment can be found in the [official documentation](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html).
 
 ```buildoutcfg
 $ pip install pycocotools
@@ -68,6 +70,8 @@ OK (skipped=1)
 ```
 ## Create the Environment using Docker
 
+First, you will need to install the docker. I recommend following [this tutorial](https://cnvrg.io/how-to-setup-docker-and-nvidia-docker-2-0-on-ubuntu-18-04/). After installing Docker, just run the following commands.
+
 To build our image run:
 
 ```
@@ -92,6 +96,21 @@ $ python train.py \
     --num_train_steps=TRAIN_STEPS \
     --num_workers=NUM_WORKS
 ```
+When starting the training process, information will be displayed at each step, like the example below:
+```
+INFO:tensorflow:Step 100 per-step time 1.938s
+I1223 23:31:42.470360 140361518614400 model_lib_v2.py:707] Step 100 per-step time 1.938s
+INFO:tensorflow:{'Loss/classification_loss': 0.82733643,
+ 'Loss/localization_loss': 0.5610607,
+ 'Loss/regularization_loss': 0.7503873,
+ 'Loss/total_loss': 2.1387844,
+ 'learning_rate': 0.1666635}
+I1223 23:31:42.473480 140361518614400 model_lib_v2.py:708] {'Loss/classification_loss': 0.82733643,
+ 'Loss/localization_loss': 0.5610607,
+ 'Loss/regularization_loss': 0.7503873,
+ 'Loss/total_loss': 2.1387844,
+ 'learning_rate': 0.1666635}
+ ```
 
 ## Exporting your Trained Model do Frozen Graph
 
@@ -103,6 +122,16 @@ $ python export.py \
     --trained_checkpoint_dir=CHECKPOINTS_DIR \
     --output_directory=EXPORTED_CHECKPOINTS_DIR
 ```
+
+in this way, the model will be exported to the output folder, generating the following folder structure:
+```
+├─ EXPORTED_CHECKPOINTS_DIR/
+│  └─ checkpoint/
+│  └─ saved_model
+│  └─ pipeline.config
+└─ ...
+```
+Now your model is ready to perform the inference process.
 
 ## Running Inference
 
@@ -133,6 +162,7 @@ The annotations will be generated in the directory of the source images.
 
 ## References
 
+- [TensorFlow 2 Object Detection API tutorial](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/index.html)
 - [How to train your own Object Detector with TensorFlow’s Object Detector API](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)
 - [TensorFlow 2 — Object Detection on Custom Dataset with Object Detection API](https://medium.com/swlh/image-object-detection-tensorflow-2-object-detection-api-af7244d4c34e)
 
