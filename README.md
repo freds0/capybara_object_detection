@@ -165,6 +165,7 @@ The annotations will be generated in the directory of the source images.
 - [TensorFlow 2 Object Detection API tutorial](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/index.html)
 - [How to train your own Object Detector with TensorFlow’s Object Detector API](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)
 - [TensorFlow 2 — Object Detection on Custom Dataset with Object Detection API](https://medium.com/swlh/image-object-detection-tensorflow-2-object-detection-api-af7244d4c34e)
+- [PASCAL VOC Writer: A python library for generating annotations in the PASCAL VOC format.](https://github.com/AndrewCarterUK/pascal-voc-writer)
 
 ## Copyright
 
