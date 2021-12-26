@@ -146,7 +146,7 @@ $ python inference.py \
 ```
 Below is an example image of the result:
 
-![alt text](examples/pred/test4.png){:height="50%" width="50%"}
+![alt text](examples/pred/test4.png)
 
 ## Auto-Annotating Images
 
