@@ -183,6 +183,7 @@ To view the annotations, copy the images to the same directory as the xml files 
 ```buildoutcfg
 $ labelImg
 ```
+Click "Open Dir" and choose the directory containing the images and annotations:
 
 ![alt text](examples/annotated_image.png)
 
