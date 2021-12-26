@@ -20,9 +20,12 @@ def execute_inference():
     detection_model = load_custom_model(args.model_path)
 
     image_files = os.path.join(args.image_path, '*.jpg')
+
+    os.makedirs(args.output_path, exist_ok=True)
+
     print("Executing auto-annotation...")
     for image_path in tqdm(glob(image_files)):
-        generate_annotation(detection_model, args.label_map, image_path)
+        generate_annotation(detection_model, args.label_map, image_path, args.output_path)
 
 
 if __name__ == "__main__":

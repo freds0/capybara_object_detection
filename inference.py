@@ -17,7 +17,9 @@ def execute_inference():
     print("Loading model...")
     detection_model = load_custom_model(args.model_path)
     
-    image_files = os.path.join(args.image_path, '*.jpeg')
+    image_files = os.path.join(args.image_path, '*.jpg')
+    os.makedirs(args.output_path, exist_ok=True)
+
     print("Executing inference...")
     for image_path in tqdm(glob(image_files)):
         generate_inference(detection_model, args.label_map, image_path, args.output_path)

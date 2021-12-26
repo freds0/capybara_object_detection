@@ -123,7 +123,7 @@ $ python export.py \
     --output_directory=EXPORTED_CHECKPOINTS_DIR
 ```
 
-in this way, the model will be exported to the output folder, generating the following folder structure:
+In this way, the model will be exported to the output folder, generating the following folder structure:
 ```
 ├─ EXPORTED_CHECKPOINTS_DIR/
 │  └─ checkpoint/
@@ -144,6 +144,9 @@ $ python inference.py \
     --label_map=LABEL_MAP_FILE \
     --output_path=OUTPUT_IMAGES_DIR
 ```
+Below is an example image of the result:
+
+![alt text](examples/pred/test4.png){:height="50%" width="50%"}
 
 ## Auto-Annotating Images
 
@@ -155,10 +158,35 @@ To generate annotations in xml format, run the following command:
 $ python annotate.py \
     --model_path=EXPORTED_CHECKPOINTS_DIR \
     --image_path=SOURCE_IMAGES_DIR \
-    --label_map=LABEL_MAP_FILE
+    --label_map=LABEL_MAP_FILE \
+    --output_path=OUTPUT_XML_DIR
 ```
 
-The annotations will be generated in the directory of the source images.
+Thus, for each image present in the SOURCE_IMAGES_DIR directory, a corresponding XML file will be created in the OUTPUT_XML_DIR directory.
+
+```
+├─ SOURCE_IMAGES_DIR/
+│  └─ image_1.jpg
+│  └─ image_2.jpg
+│  └─ ...
+│  └─ image_n.jpg
+│  
+├─ OUTPUT_XML_DIR/
+│  └─ image_1.xml
+│  └─ image_2.xml
+│  └─ ...
+│  └─ image_n.xml
+```
+
+To view the annotations, copy the images to the same directory as the xml files and use the LabelImg program.
+
+```buildoutcfg
+$ labelImg
+```
+
+![alt text](examples/annotated_image.png)
+
+If you need to export annotations to another format (eg COCO or YOLO), check the "tools" folder which contains some conversion scripts.
 
 ## References
 
