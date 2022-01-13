@@ -9,7 +9,7 @@ def execute_train():
     parser.add_argument('--config_file', default='./configs/mobilenet_v2_pipeline.config', help='Path to your config file.')
     parser.add_argument('--checkpoint_every_n', default=1000, type=int, help='The number of steps per checkpoint.')
     parser.add_argument('--num_train_steps', default=100000, type=int, help='Total number of trainning steps.')
-    parser.add_argument('--num_workers', default=4, type=int, help='Number of cores that can be used for the training job.')
+    parser.add_argument('--num_workers', default=64, type=int, help='Number of cores that can be used for the training job.')
     args = parser.parse_args()
 
     print("Executing train...")
