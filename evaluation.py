@@ -16,7 +16,7 @@ def execute_model_evaluation():
     subprocess.run(["python3", "/tensorflow/models/research/object_detection/model_main_tf2.py",
         "--pipeline_config_path={}".format(args.config_file),
         "--model_dir={}".format(args.checkpoint_path),
-        "--checkpoint_dir={}".format(args.checkpoint_every_n),
+        "--checkpoint_dir={}".format(args.checkpoint_path),
         "--num_workers={}".format(args.num_workers),
         "--alsologtostderr"
     ])
