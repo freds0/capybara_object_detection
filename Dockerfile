@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-pil \
     python3-lxml \
-    python3-opencv 
+    python3-opencv \
+    libgl1
 
 RUN apt-get install -y \
     git \    
