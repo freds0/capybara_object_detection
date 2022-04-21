@@ -1,0 +1,20 @@
+--- # Application configuration - config.yaml
+pipeline_config:
+    # Dataset
+    input_train_img_folder: "data/capybara_dataset/images/train"
+    input_test_img_folder: "data/capybara_dataset/images/test"
+    input_train_csv: "data/capybara_dataset/data/train_labels.csv"
+    input_test_csv: "data/capybara_dataset/data/test_labels.csv"
+    train_record_path: "data/capybara_dataset/train.record"
+    test_record_path: "data/capybara_dataset//test.record"
+    labelmap_path: "data/capybara_dataset/data/label_map.pbtxt"
+    num_classes: 1
+    # Model
+    model_name: "ssd_mobilenet_v2_320x320"
+    checkpoint_save_path: "checkpoints"
+    pipeline_config_filepath: "data/pipeline_ssd_mobilenet_v2_320x320.config"
+    # Training
+    num_train_steps: 50000
+    checkpoint_every_n: 10000
+    batch_size: 32
+    use_data_aug: false # True or False
