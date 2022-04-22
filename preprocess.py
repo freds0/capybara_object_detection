@@ -65,6 +65,8 @@ if __name__ == '__main__':
     input_csv_filepath = join(args.base_dir, args.input_csv) if args.input_csv else config['pipeline_config']['input_train_csv']
     # define csv output filepath
     output_csv_filepath = join(args.base_dir, args.output_csv) if args.output_csv else config['preprocess']['output_data_aug_csv']
+    # define img extension
+    img_extension = args.image_extension if args.image_extension else config['preprocess']['image_extension']
 
     # create output folder
     if not isdir(output_folder):
@@ -84,9 +86,9 @@ if __name__ == '__main__':
     print('Generating data augmented files...')
     for filename in tqdm.tqdm(img_list):
         # augment image
-        aug_images, aug_bbs = aug_image(filename, data, config['preprocess']['augmentations'], input_folder, aug_per_file)
+        aug_images, aug_bbs = aug_image(filename, data, config['preprocess']['augmentations'], input_folder, aug_per_file, img_extension)
         # store augmentations in new DataFrame and save image
-        aug_data = save_augmentations(aug_images, aug_bbs, aug_data, filename, output_folder, args.resize, args.new_shape)
+        aug_data = save_augmentations(aug_images, aug_bbs, aug_data, filename, output_folder, args.resize, args.new_shape, img_extension)
 
     # Merge csv datasets
     new_data =  pd.concat([data,aug_data], ignore_index=True)
