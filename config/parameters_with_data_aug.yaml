@@ -140,6 +140,11 @@ preprocess:
         # MotionBlur
         MotionBlurMin: 5
         MotionBlurMax: 10
-        # Rain 
+        # SnowFlakes
+        SnowflakesSizeMin: 0.7
+        SnowflakesSizeMax: 0.95
+        SnowflakesSpeedMin: 0.001
+        SnowflakesSpeedMax: 0.03
+        # Rain
         RainSpeedMin: 0.01
         RainSpeedMax: 0.2
