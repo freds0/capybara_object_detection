@@ -5,7 +5,7 @@ import yaml
 import pandas as pd
 import tqdm
 from utils.data_augmentation import aug_image, save_augmentations
-import time
+#import time
 from shutil import copyfile
 
 def select_data(data):
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--output_folder', help='Folder to save data augmented images.')
     parser.add_argument('--input_csv', help='Input csv filepath.')
     parser.add_argument('--output_csv', help='Output csv filepath')
-    parser.add_argument('--image_extension', help='Image file extension. Ex. .jpg or .jpeg')
+    parser.add_argument('-e', '--image_extension', help='Image file extension: jpg or jpeg')
     parser.add_argument('--aug_per_file',  help='Total number of augmentations per file.')
     parser.add_argument('--seed', default=42, help='seed: int or -1 for random')
     parser.add_argument('--resize', action='store_true')
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     # define csv output filepath
     output_csv_filepath = join(args.base_dir, args.output_csv) if args.output_csv else config['preprocess']['output_data_aug_csv']
     # define img extension
-    img_extension = args.image_extension if args.image_extension else config['preprocess']['image_extension']
+    img_extension = args.image_extension if args.image_extension else config['pipeline_config']['image_extension']
 
     # create output folder
     if not isdir(output_folder):

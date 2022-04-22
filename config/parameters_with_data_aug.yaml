@@ -8,6 +8,7 @@ pipeline_config:
     train_record_path: "data/capybara_dataset/train.record"
     test_record_path: "data/capybara_dataset/test.record"
     labelmap_path: "data/capybara_dataset/data/label_map.pbtxt"
+    image_extension: "jpeg"
     num_classes: 1
     # Model
     model_name: "ssd_mobilenet_v2_320x320"
@@ -22,7 +23,6 @@ pipeline_config:
 preprocess:
     output_data_aug_imgs_folder: "data/capybara_dataset/images/train_aug"
     output_data_aug_csv: "data/capybara_dataset/data/train_aug.csv"
-    image_extension: ".jpeg"
     seed: 42
     resize: false
     new_shape: (1280, 720)
